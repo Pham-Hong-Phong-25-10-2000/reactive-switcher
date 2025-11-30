@@ -1,5 +1,5 @@
 <p align="center">
-	<img src="./public/images/logo/Logo.png" alt="Reactive Switcher Logo" width="180" />
+	<img src="./public/logo/Logo.png" alt="Reactive Switcher Logo" width="180" />
 </p>
 
 # Reactive Switcher
