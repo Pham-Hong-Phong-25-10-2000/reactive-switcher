@@ -6,19 +6,13 @@ export default function Home() {
   const { theme, setTheme } = useTheme();
 
   return (
-    <div
-      className="min-h-screen transition-colors duration-300"
-      style={{
-        backgroundColor: "var(--color-background)",
-        color: "var(--color-foreground)",
-      }}
-    >
-      <main className="max-w-4xl mx-auto p-10 space-y-12">
+    // Artık style prop'u yok! bg-background ve text-foreground CSS'ten geliyor.
+    <div className="min-h-screen flex flex-col">
+      <main className="max-w-4xl mx-auto p-10 space-y-12 w-full flex-1">
         {/* Header */}
         <div className="text-center space-y-4">
           <h1 className="text-4xl font-bold tracking-tight">
-            Theme Switcher{" "}
-            <span className="text-[var(--color-primary-DEFAULT)]">v1.0</span>
+            Theme Switcher <span className="text-primary">v1.0</span>
           </h1>
           <p className="text-lg opacity-80">
             Aktif Tema:{" "}
@@ -27,17 +21,17 @@ export default function Home() {
         </div>
 
         {/* Kontroller */}
-        <div className="flex justify-center gap-4 p-6 rounded-2xl bg-[var(--color-surface-100)] shadow-sm">
+        <div className="flex justify-center gap-4 p-6 rounded-2xl bg-surface-100 shadow-sm border border-surface-200">
           {["light", "dark", "ocean"].map((t) => (
             <button
               key={t}
               onClick={() => setTheme(t)}
               className={`
-                px-6 py-2.5 rounded-lg font-medium transition-all
+                px-6 py-2.5 rounded-lg font-medium transition-all duration-200
                 ${
                   theme === t
-                    ? "bg-[var(--color-primary-DEFAULT)] text-[var(--color-primary-foreground)] shadow-md scale-105"
-                    : "bg-[var(--color-surface-200)] hover:bg-[var(--color-surface-50)]"
+                    ? "bg-primary text-primary-foreground shadow-lg scale-105"
+                    : "bg-surface-200 hover:bg-surface-50 text-foreground"
                 }
               `}
             >
@@ -52,16 +46,16 @@ export default function Home() {
           <div className="space-y-3">
             <h3 className="font-semibold text-xl">Primary Palette</h3>
             <div className="grid grid-cols-5 gap-2">
-              {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900].map(
+              {[50, 100, 200, 300, 400, 500, 600, 700, 800, 900, 950].map(
                 (shade) => (
-                  <div key={shade} className="space-y-1 text-center">
+                  <div key={shade} className="space-y-1 text-center group">
+                    {/* Dinamik sınıf isimleri için template literal kullanımı */}
                     <div
-                      className="h-12 w-full rounded-md shadow-sm border border-[var(--color-surface-200)]"
-                      style={{
-                        backgroundColor: `var(--color-primary-${shade})`,
-                      }}
+                      className={`h-12 w-full rounded-md shadow-sm border border-surface-200 bg-primary-${shade}`}
                     />
-                    <div className="text-xs opacity-60">{shade}</div>
+                    <div className="text-xs opacity-60 group-hover:opacity-100 transition-opacity">
+                      {shade}
+                    </div>
                   </div>
                 )
               )}
@@ -72,23 +66,11 @@ export default function Home() {
           <div className="space-y-3">
             <h3 className="font-semibold text-xl">Semantic Colors</h3>
             <div className="grid grid-cols-2 gap-4">
-              <div
-                className="p-4 rounded-xl border border-[var(--color-surface-200)] flex items-center justify-between"
-                style={{
-                  backgroundColor: "var(--color-secondary-DEFAULT)",
-                  color: "var(--color-secondary-foreground)",
-                }}
-              >
+              <div className="p-4 rounded-xl border border-surface-200 bg-secondary text-secondary-foreground flex justify-between items-center">
                 <span>Secondary</span>
                 <span className="text-xs opacity-75">Aa</span>
               </div>
-              <div
-                className="p-4 rounded-xl border border-[var(--color-surface-200)] flex items-center justify-between"
-                style={{
-                  backgroundColor: "var(--color-accent-DEFAULT)",
-                  color: "var(--color-accent-foreground)",
-                }}
-              >
+              <div className="p-4 rounded-xl border border-surface-200 bg-accent text-accent-foreground flex justify-between items-center">
                 <span>Accent</span>
                 <span className="text-xs opacity-75">Aa</span>
               </div>

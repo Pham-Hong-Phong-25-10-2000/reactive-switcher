@@ -1,1 +1,54 @@
 @import "tailwindcss";
+
+@theme {
+  /* Burada Tailwind'e kendi renk token'larımızı tanıtıyoruz.
+    Sağ taraftaki var(...) kısımları, bizim React Provider'ımızın
+    DOM'a bastığı değerleri yakalayacak.
+  */
+
+  /* Base Colors */
+  --color-background: var(--color-background);
+  --color-foreground: var(--color-foreground);
+
+  /* Primary Palette (Tüm tonları haritalıyoruz) */
+  --color-primary: var(--color-primary-DEFAULT);
+  --color-primary-foreground: var(--color-primary-foreground);
+  --color-primary-50: var(--color-primary-50);
+  --color-primary-100: var(--color-primary-100);
+  --color-primary-200: var(--color-primary-200);
+  --color-primary-300: var(--color-primary-300);
+  --color-primary-400: var(--color-primary-400);
+  --color-primary-500: var(--color-primary-500);
+  --color-primary-600: var(--color-primary-600);
+  --color-primary-700: var(--color-primary-700);
+  --color-primary-800: var(--color-primary-800);
+  --color-primary-900: var(--color-primary-900);
+  --color-primary-950: var(--color-primary-950);
+
+  /* Secondary Palette */
+  --color-secondary: var(--color-secondary-DEFAULT);
+  --color-secondary-foreground: var(--color-secondary-foreground);
+
+  /* Accent Palette */
+  --color-accent: var(--color-accent-DEFAULT);
+  --color-accent-foreground: var(--color-accent-foreground);
+
+  /* Surface Palette */
+  --color-surface-50: var(--color-surface-50);
+  --color-surface-100: var(--color-surface-100);
+  --color-surface-200: var(--color-surface-200);
+}
+
+/* Varsayılan arka plan ve yazı rengini atıyoruz.
+  Böylece her div'e "bg-background" yazmak zorunda kalmazsın.
+*/
+@layer base {
+  body {
+    background-color: var(--color-background);
+    color: var(--color-foreground);
+    /* Yumuşak geçiş efekti */
+    transition-property: color, background-color, border-color, text-decoration-color, fill, stroke;
+    transition-timing-function: cubic-bezier(0.4, 0, 0.2, 1);
+    transition-duration: 300ms;
+  }
+}
