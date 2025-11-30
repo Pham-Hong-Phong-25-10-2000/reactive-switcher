@@ -1,36 +1,80 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+<p align="center">
+	<img src="./public/images/logo/Logo.png" alt="Reactive Switcher Logo" width="180" />
+</p>
 
-## Getting Started
+# Reactive Switcher
 
-First, run the development server:
+Tema değiştirme ve yönetimi için modern, esnek ve kolay entegre edilebilen bir Next.js paketi.
+
+## Özellikler
+
+- React Context ile tema yönetimi
+- Kendi temalarınızı tanımlama ve kolayca değiştirme
+- Hafif ve performanslı
+- Next.js ile tam uyumlu
+
+## Kurulum
 
 ```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+pnpm add @poyrazavsever/theme-switcher
+# veya
+npm install @poyrazavsever/theme-switcher
+# veya
+yarn add @poyrazavsever/theme-switcher
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+## Kullanım
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+Ana dosyanızda ThemeProvider ile uygulamanızı sarmalayın:
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+```tsx
+import { ThemeProvider } from "@poyrazavsever/theme-switcher";
 
-## Learn More
+export default function App({ children }) {
+  return <ThemeProvider>{children}</ThemeProvider>;
+}
+```
 
-To learn more about Next.js, take a look at the following resources:
+Tema değiştirmek için context’i kullanın:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+```tsx
+import { useTheme } from "@poyrazavsever/theme-switcher";
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
+const ThemeSwitcher = () => {
+  const { theme, setTheme } = useTheme();
+  return (
+    <button onClick={() => setTheme(theme === "dark" ? "light" : "dark")}>
+      Temayı Değiştir
+    </button>
+  );
+};
+```
 
-## Deploy on Vercel
+## Paket Yapısı
 
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
+- `context.tsx`: Tema context ve provider
+- `my-theme.ts`: Varsayılan ve özel tema tanımları
+- `types.ts`: Tip tanımlamaları
+- `utils.ts`: Yardımcı fonksiyonlar
 
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+## Geliştirme
+
+Projeyi başlatmak için:
+
+```bash
+pnpm dev
+# veya
+npm run dev
+# veya
+yarn dev
+```
+
+Uygulama [localhost:3000](http://localhost:3000) adresinde çalışacaktır.
+
+## Katkı
+
+Katkı sağlamak için pull request gönderebilirsiniz. Sorularınız için issue açabilirsiniz.
+
+## Lisans
+
+MIT
