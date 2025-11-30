@@ -27,13 +27,15 @@ export const flattenTheme = (
   return cssVariables;
 };
 
-
-export const createCssString = (theme: Theme): string => {
+// GÜNCELLEME: selector parametresi eklendi
+export const createCssString = (
+  theme: Theme,
+  selector: string = ":root"
+): string => {
   const variables = flattenTheme(theme.colors);
 
-  // :root seçicisi içine değişkenleri yazıyoruz.
-  // Tailwind v4 bu değişkenleri otomatik algılayacaktır.
-  let cssString = ":root {\n";
+  // Selector ile stil bloğu oluşturuluyor (örn: #demo-area { ... })
+  let cssString = `${selector} {\n`;
 
   Object.entries(variables).forEach(([key, value]) => {
     cssString += `  ${key}: ${value};\n`;

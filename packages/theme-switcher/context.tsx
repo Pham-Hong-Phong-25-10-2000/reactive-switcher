@@ -17,12 +17,16 @@ interface ThemeProviderProps {
   children: ReactNode;
   themes: ThemesConfig;
   defaultTheme: string;
+  selector?: string; // YENİ: CSS değişkenlerinin uygulanacağı seçici
+  styleId?: string; // YENİ: Style etiketinin benzersiz ID'si
 }
 
 export const ThemeProvider: React.FC<ThemeProviderProps> = ({
   children,
   themes,
   defaultTheme,
+  selector = ":root", // Varsayılan olarak tüm sayfayı etkiler
+  styleId = "react-theme-switcher-styles", // Varsayılan ID
 }) => {
   // 1. State: Aktif tema ismi
   const [theme, setThemeState] = useState<string>(defaultTheme);
@@ -36,8 +40,7 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     }
   };
 
-  // Basit toggle fonksiyonu (Örn: light -> dark -> light)
-  // Eğer ikiden fazla tema varsa sırayla döner.
+  // Basit toggle fonksiyonu
   const toggleTheme = () => {
     const themeKeys = Object.keys(themes);
     const currentIndex = themeKeys.indexOf(theme);
@@ -50,11 +53,10 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     const activeThemeObject = themes[theme];
     if (!activeThemeObject) return;
 
-    // a. CSS stringini oluştur (utils.ts'den gelen fonksiyon)
-    const cssString = createCssString(activeThemeObject);
-    const styleId = "react-theme-switcher-styles";
+    // a. CSS stringini oluştur (selector ile)
+    const cssString = createCssString(activeThemeObject, selector);
 
-    // b. <style> etiketini bul veya oluştur
+    // b. <style> etiketini bul veya oluştur (styleId ile)
     let styleTag = document.getElementById(styleId);
     if (!styleTag) {
       styleTag = document.createElement("style");
@@ -65,14 +67,16 @@ export const ThemeProvider: React.FC<ThemeProviderProps> = ({
     // c. Yeni CSS değişkenlerini enjekte et
     styleTag.innerHTML = cssString;
 
-    // d. Tailwind 'darkMode: class' stratejisi için HTML sınıfını yönet
-    const html = document.documentElement;
-    if (activeThemeObject.type === "dark") {
-      html.classList.add("dark");
-    } else {
-      html.classList.remove("dark");
+    // d. Tailwind 'darkMode: class' stratejisi (Sadece global ise HTML'e class ekle)
+    if (selector === ":root") {
+      const html = document.documentElement;
+      if (activeThemeObject.type === "dark") {
+        html.classList.add("dark");
+      } else {
+        html.classList.remove("dark");
+      }
     }
-  }, [theme, themes]); // theme veya themes değişirse çalışır
+  }, [theme, themes, selector, styleId]);
 
   const value = {
     theme,
