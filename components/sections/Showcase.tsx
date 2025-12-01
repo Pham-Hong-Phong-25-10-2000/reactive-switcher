@@ -13,6 +13,7 @@ interface ShowcaseProps {
 function ShowcaseContent({ lang }: ShowcaseProps) {
   const { theme, setTheme, resolvedTheme } = useTheme();
   const t = content[lang].demo;
+  const s = content[lang].showcase;
   const themeList = ["light", "dark", "ocean"];
 
   const themeInfo: Record<
@@ -22,17 +23,17 @@ function ShowcaseContent({ lang }: ShowcaseProps) {
     light: {
       icon: <Icons.Sun className="w-5 h-5" />,
       color: "from-amber-400 to-orange-500",
-      label: lang === "en" ? "Light Mode" : "Açık Mod",
+      label: s.lightMode,
     },
     dark: {
       icon: <Icons.Moon className="w-5 h-5" />,
       color: "from-indigo-400 to-purple-500",
-      label: lang === "en" ? "Dark Mode" : "Koyu Mod",
+      label: s.darkMode,
     },
     ocean: {
       icon: <Icons.Waves className="w-5 h-5" />,
       color: "from-teal-400 to-cyan-500",
-      label: lang === "en" ? "Ocean Mode" : "Okyanus Modu",
+      label: s.oceanMode,
     },
   };
 
@@ -42,7 +43,7 @@ function ShowcaseContent({ lang }: ShowcaseProps) {
       <div className="text-center max-w-3xl mx-auto mb-16">
         <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-accent/10 border border-accent/20 text-accent text-sm font-medium mb-6">
           <Icons.Palette className="w-4 h-4" />
-          {lang === "en" ? "Interactive Demo" : "İnteraktif Demo"}
+          {s.interactiveDemo}
         </div>
         <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-4">
           {t.title}
@@ -108,12 +109,10 @@ function ShowcaseContent({ lang }: ShowcaseProps) {
               </div>
               <div>
                 <h4 className="font-medium text-foreground text-sm mb-1">
-                  {lang === "en" ? "Scoped Theming" : "Kapsamlı Tema"}
+                  {s.scopedTheming}
                 </h4>
                 <p className="text-xs text-secondary leading-relaxed">
-                  {lang === "en"
-                    ? "This demo uses isolated theming. Changes only affect the preview panel, not the main page."
-                    : "Bu demo izole tema kullanır. Değişiklikler sadece önizleme panelini etkiler, ana sayfayı değil."}
+                  {s.scopedDesc}
                 </p>
               </div>
             </div>
@@ -150,15 +149,13 @@ function ShowcaseContent({ lang }: ShowcaseProps) {
               <div className="flex items-center justify-between mb-8">
                 <div>
                   <h3 className="text-xl font-bold text-foreground">
-                    Dashboard
+                    {s.dashboard}
                   </h3>
-                  <p className="text-sm text-secondary">
-                    Welcome back, Developer
-                  </p>
+                  <p className="text-sm text-secondary">{s.welcomeBack}</p>
                 </div>
                 <button className="px-4 py-2 bg-primary text-primary-foreground rounded-xl text-sm font-medium flex items-center gap-2 shadow-lg shadow-primary/20">
                   <Icons.Lightning className="w-4 h-4" />
-                  New Project
+                  {s.newProject}
                 </button>
               </div>
 
@@ -166,19 +163,19 @@ function ShowcaseContent({ lang }: ShowcaseProps) {
               <div className="grid grid-cols-3 gap-4 mb-8">
                 {[
                   {
-                    label: "Total Users",
+                    label: s.totalUsers,
                     value: "12,430",
                     change: "+12%",
                     icon: Icons.Star,
                   },
                   {
-                    label: "Active Now",
+                    label: s.activeNow,
                     value: "2,840",
                     change: "+8%",
                     icon: Icons.Lightning,
                   },
                   {
-                    label: "Revenue",
+                    label: s.revenue,
                     value: "$48.2K",
                     change: "+24%",
                     icon: Icons.Heart,
@@ -210,10 +207,10 @@ function ShowcaseContent({ lang }: ShowcaseProps) {
                 <div className="col-span-2 p-5 rounded-xl bg-surface-50 border border-surface-100">
                   <div className="flex items-center justify-between mb-4">
                     <h4 className="font-semibold text-foreground">
-                      Recent Activity
+                      {s.recentActivity}
                     </h4>
                     <button className="text-xs text-primary font-medium">
-                      View All
+                      {s.viewAll}
                     </button>
                   </div>
                   <div className="space-y-3">
@@ -227,7 +224,9 @@ function ShowcaseContent({ lang }: ShowcaseProps) {
                           <div className="h-3 w-32 bg-surface-200 rounded-full" />
                           <div className="h-2 w-20 bg-surface-200/50 rounded-full mt-2" />
                         </div>
-                        <div className="text-xs text-secondary">2m ago</div>
+                        <div className="text-xs text-secondary">
+                          2{s.minutesAgo}
+                        </div>
                       </div>
                     ))}
                   </div>
@@ -236,10 +235,10 @@ function ShowcaseContent({ lang }: ShowcaseProps) {
                 {/* Sidebar */}
                 <div className="p-5 rounded-xl bg-primary/5 border border-primary/10">
                   <h4 className="font-semibold text-primary mb-4">
-                    Quick Actions
+                    {s.quickActions}
                   </h4>
                   <div className="space-y-2">
-                    {["Create Post", "Upload File", "Send Email"].map(
+                    {[s.createPost, s.uploadFile, s.sendEmail].map(
                       (action, i) => (
                         <button
                           key={i}

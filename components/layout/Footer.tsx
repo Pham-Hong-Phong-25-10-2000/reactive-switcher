@@ -3,42 +3,48 @@
 import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "../icons";
+import { Lang, content } from "@/landing/content";
 
-export function Footer() {
+interface FooterProps {
+  lang: Lang;
+}
+
+export function Footer({ lang }: FooterProps) {
   const currentYear = new Date().getFullYear();
+  const t = content[lang].footer;
 
   const footerLinks = {
     product: [
-      { label: "Documentation", href: "/docs" },
-      { label: "Showcase", href: "#showcase" },
-      { label: "Features", href: "#features" },
+      { label: t.documentation, href: "/docs" },
+      { label: t.showcase, href: "#showcase" },
+      { label: t.features, href: "#features" },
       {
-        label: "Changelog",
+        label: t.changelog,
         href: "https://github.com/poyrazavsever/reactive-switcher/releases",
         external: true,
       },
     ],
     resources: [
       {
-        label: "GitHub",
+        label: t.github,
         href: "https://github.com/poyrazavsever/reactive-switcher",
         external: true,
       },
       {
-        label: "NPM Package",
+        label: t.npmPackage,
         href: "https://www.npmjs.com/package/reactive-switcher",
         external: true,
       },
-      { label: "Blog", href: "https://poyrazavsever.com/blog", external: true },
+      { label: t.blog, href: "https://poyrazavsever.com/blog", external: true },
     ],
     community: [
       {
-        label: "Twitter",
+        label: t.twitter,
         href: "https://twitter.com/poyrazavsever",
         external: true,
       },
       {
-        label: "Buy me a coffee",
+        label: t.buyMeACoffee,
         href: "https://www.buymeacoffee.com/poyrazavsever",
         external: true,
       },
@@ -78,8 +84,7 @@ export function Footer() {
               </div>
             </Link>
             <p className="text-secondary text-sm leading-relaxed mb-6 max-w-sm">
-              Type-safe, modular, and instant theme switching for React &
-              Tailwind CSS v4. Zero runtime overhead.
+              {t.description}
             </p>
             {/* Social Links */}
             <div className="flex items-center gap-3">
@@ -109,7 +114,7 @@ export function Footer() {
 
           {/* Product Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Product</h4>
+            <h4 className="font-semibold text-foreground mb-4">{t.product}</h4>
             <ul className="space-y-3">
               {footerLinks.product.map((link) => (
                 <li key={link.label}>
@@ -137,7 +142,9 @@ export function Footer() {
 
           {/* Resources Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Resources</h4>
+            <h4 className="font-semibold text-foreground mb-4">
+              {t.resources}
+            </h4>
             <ul className="space-y-3">
               {footerLinks.resources.map((link) => (
                 <li key={link.label}>
@@ -156,7 +163,9 @@ export function Footer() {
 
           {/* Community Links */}
           <div>
-            <h4 className="font-semibold text-foreground mb-4">Community</h4>
+            <h4 className="font-semibold text-foreground mb-4">
+              {t.community}
+            </h4>
             <ul className="space-y-3">
               {footerLinks.community.map((link) => (
                 <li key={link.label}>
@@ -174,7 +183,7 @@ export function Footer() {
             {/* MIT Badge */}
             <div className="mt-4 inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-green-500/10 border border-green-500/20 text-green-600 text-xs font-medium">
               <span className="w-1.5 h-1.5 rounded-full bg-green-500" />
-              MIT License
+              {t.mitLicense}
             </div>
           </div>
         </div>
@@ -182,8 +191,8 @@ export function Footer() {
         {/* Bottom Bar */}
         <div className="pt-8 border-t border-surface-200/50 flex flex-col sm:flex-row justify-between items-center gap-4">
           <p className="text-sm text-secondary">
-            © {currentYear} Poyraz Avsever. Built with{" "}
-            <Icons.Heart className="w-4 h-4 inline text-red-500" /> using
+            © {currentYear} Poyraz Avsever. {t.builtWith}{" "}
+            <Icons.Heart className="w-4 h-4 inline text-red-500" /> {t.using}{" "}
             Next.js & Tailwind CSS
           </p>
           <div className="flex items-center gap-4 text-sm text-secondary">
@@ -193,7 +202,7 @@ export function Footer() {
               className="hover:text-primary transition-colors flex items-center gap-1"
             >
               <Icons.Star className="w-4 h-4" />
-              Star on GitHub
+              {t.starOnGithub}
             </a>
           </div>
         </div>

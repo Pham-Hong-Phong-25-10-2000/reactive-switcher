@@ -47,18 +47,15 @@ export function Hero({ lang }: HeroProps) {
       </div>
 
       <div className="max-w-5xl mx-auto text-center">
-
         {/* Main Heading */}
         <h1
           className={`text-4xl sm:text-5xl md:text-6xl lg:text-7xl font-extrabold tracking-tight mb-6 transition-all duration-500 delay-100 ${
             mounted ? "opacity-100 translate-y-0" : "opacity-0 translate-y-4"
           }`}
         >
-          <span className="block text-foreground">
-            {lang === "en" ? "Theme Switching" : "Tema Değiştirme"}
-          </span>
+          <span className="block text-foreground">{t.titleLine1}</span>
           <span className="block mt-2 bg-gradient-to-r from-primary via-accent to-primary bg-clip-text text-transparent bg-[length:200%_auto] animate-gradient">
-            {lang === "en" ? "Made Simple" : "Artık Çok Kolay"}
+            {t.titleLine2}
           </span>
         </h1>
 
@@ -126,11 +123,9 @@ export function Hero({ lang }: HeroProps) {
             </div>
             <div className="text-left">
               <div className="text-sm font-semibold text-foreground">
-                TypeScript
+                {t.typescript}
               </div>
-              <div className="text-xs text-secondary">
-                {lang === "en" ? "Full Support" : "Tam Destek"}
-              </div>
+              <div className="text-xs text-secondary">{t.fullSupport}</div>
             </div>
           </div>
 
@@ -140,11 +135,9 @@ export function Hero({ lang }: HeroProps) {
             </div>
             <div className="text-left">
               <div className="text-sm font-semibold text-foreground">
-                Tailwind v4
+                {t.tailwindV4}
               </div>
-              <div className="text-xs text-secondary">
-                {lang === "en" ? "Ready" : "Uyumlu"}
-              </div>
+              <div className="text-xs text-secondary">{t.ready}</div>
             </div>
           </div>
 
@@ -154,9 +147,7 @@ export function Hero({ lang }: HeroProps) {
             </div>
             <div className="text-left">
               <div className="text-sm font-semibold text-foreground">~2KB</div>
-              <div className="text-xs text-secondary">
-                {lang === "en" ? "Gzipped" : "Sıkıştırılmış"}
-              </div>
+              <div className="text-xs text-secondary">{t.gzipped}</div>
             </div>
           </div>
         </div>
@@ -218,7 +209,7 @@ export function Hero({ lang }: HeroProps) {
 
             {/* Floating Elements */}
             <div className="absolute -top-4 -right-4 px-3 py-1.5 bg-green-500 text-white text-xs font-bold rounded-full shadow-lg animate-float">
-              {lang === "en" ? "No Flash!" : "Flash Yok!"}
+              {t.noFlash}
             </div>
             <div className="absolute -bottom-4 -left-4 px-3 py-1.5 bg-primary text-primary-foreground text-xs font-bold rounded-full shadow-lg animate-float animation-delay-2000">
               SSR Ready

@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { Icons } from "../icons";
-import { Lang } from "@/landing/content";
+import { Lang, content } from "@/landing/content";
 import { useTheme } from "@/packages/theme-switcher/src";
 
 interface NavbarProps {
@@ -16,6 +16,7 @@ export function Navbar({ lang, setLang }: NavbarProps) {
   const { theme, setTheme, themes } = useTheme();
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+  const t = content[lang].navbar;
 
   // Scroll listener for navbar background
   useEffect(() => {
@@ -29,17 +30,17 @@ export function Navbar({ lang, setLang }: NavbarProps) {
   const navLinks = [
     {
       href: "features",
-      label: lang === "en" ? "Features" : "Özellikler",
+      label: t.features,
       isSection: true,
     },
     {
       href: "showcase",
-      label: lang === "en" ? "Showcase" : "Demo",
+      label: t.showcase,
       isSection: true,
     },
     {
       href: "/docs",
-      label: lang === "en" ? "Docs" : "Döküman",
+      label: t.docs,
       isSection: false,
     },
   ];
@@ -162,7 +163,7 @@ export function Navbar({ lang, setLang }: NavbarProps) {
                 className="hidden md:flex items-center gap-2 px-4 py-2 text-sm font-medium bg-foreground text-background rounded-full hover:opacity-90 transition-opacity"
               >
                 <Icons.Github className="w-4 h-4" />
-                <span>Star on GitHub</span>
+                <span>{t.starOnGithub}</span>
               </a>
 
               {/* Mobile Menu Button */}
@@ -216,7 +217,7 @@ export function Navbar({ lang, setLang }: NavbarProps) {
             {/* Mobile Theme Switcher */}
             <div className="px-4 py-3">
               <p className="text-xs font-medium text-secondary uppercase tracking-wider mb-3">
-                {lang === "en" ? "Theme" : "Tema"}
+                {t.theme}
               </p>
               <div className="flex items-center gap-2">
                 {themes.map((t) => (
@@ -244,7 +245,7 @@ export function Navbar({ lang, setLang }: NavbarProps) {
               className="flex items-center justify-center gap-2 mx-4 py-3 text-sm font-medium bg-foreground text-background rounded-xl"
             >
               <Icons.Github className="w-4 h-4" />
-              <span>Star on GitHub</span>
+              <span>{t.starOnGithub}</span>
             </a>
           </div>
         </div>

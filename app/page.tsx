@@ -16,6 +16,7 @@ import { Showcase } from "@/components/sections/Showcase";
 
 export default function LandingPage() {
   const [lang, setLang] = useState<Lang>("en");
+  const cta = content[lang].cta;
 
   return (
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500 selection:bg-primary selection:text-primary-foreground font-sans">
@@ -38,14 +39,10 @@ export default function LandingPage() {
 
           <div className="max-w-4xl mx-auto text-center">
             <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold text-foreground mb-6">
-              {lang === "en"
-                ? "Ready to Get Started?"
-                : "Başlamaya Hazır mısınız?"}
+              {cta.title}
             </h2>
             <p className="text-lg text-secondary mb-10 max-w-2xl mx-auto">
-              {lang === "en"
-                ? "Add beautiful, customizable themes to your React app in just a few minutes. It's free and open source."
-                : "React uygulamanıza birkaç dakika içinde güzel, özelleştirilebilir temalar ekleyin. Ücretsiz ve açık kaynak."}
+              {cta.description}
             </p>
 
             <div className="flex flex-col sm:flex-row items-center justify-center gap-4">
@@ -53,7 +50,7 @@ export default function LandingPage() {
                 href="/docs"
                 className="group inline-flex items-center gap-2 px-8 py-4 bg-primary text-primary-foreground font-semibold rounded-2xl hover:shadow-2xl hover:shadow-primary/30 hover:-translate-y-0.5 transition-all"
               >
-                {lang === "en" ? "Read the Docs" : "Dökümantasyonu Oku"}
+                {cta.readDocs}
                 <Icons.Book className="w-5 h-5 transition-transform group-hover:translate-x-0.5" />
               </Link>
               <a
@@ -62,7 +59,7 @@ export default function LandingPage() {
                 className="inline-flex items-center gap-2 px-8 py-4 bg-surface-100 text-foreground font-semibold rounded-2xl border border-surface-200 hover:bg-surface-200 transition-all"
               >
                 <Icons.Github className="w-5 h-5" />
-                {lang === "en" ? "View on GitHub" : "GitHub'da Görüntüle"}
+                {cta.viewOnGithub}
               </a>
             </div>
 
@@ -70,9 +67,7 @@ export default function LandingPage() {
             <div className="mt-16 grid grid-cols-3 gap-8 max-w-lg mx-auto">
               <div>
                 <div className="text-3xl font-bold text-primary">~2KB</div>
-                <div className="text-sm text-secondary">
-                  {lang === "en" ? "Gzipped" : "Sıkıştırılmış"}
-                </div>
+                <div className="text-sm text-secondary">{cta.gzipped}</div>
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">100%</div>
@@ -80,16 +75,14 @@ export default function LandingPage() {
               </div>
               <div>
                 <div className="text-3xl font-bold text-primary">MIT</div>
-                <div className="text-sm text-secondary">
-                  {lang === "en" ? "Licensed" : "Lisanslı"}
-                </div>
+                <div className="text-sm text-secondary">{cta.licensed}</div>
               </div>
             </div>
           </div>
         </section>
       </main>
 
-      <Footer />
+      <Footer lang={lang} />
     </div>
   );
 }
