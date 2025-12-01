@@ -101,8 +101,8 @@ export const themes: ThemesConfig = {
         950: "#f0fdfa",
       },
       secondary: {
-        DEFAULT: "#134e4a",
-        foreground: "#ccfbf1",
+        DEFAULT: "#5eead4",
+        foreground: "#042f2e",
       },
       accent: {
         DEFAULT: "#facc15",

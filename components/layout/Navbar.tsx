@@ -27,10 +27,30 @@ export function Navbar({ lang, setLang }: NavbarProps) {
   }, []);
 
   const navLinks = [
-    { href: "#features", label: lang === "en" ? "Features" : "Özellikler" },
-    { href: "#showcase", label: lang === "en" ? "Showcase" : "Demo" },
-    { href: "/docs", label: lang === "en" ? "Docs" : "Döküman" },
+    {
+      href: "features",
+      label: lang === "en" ? "Features" : "Özellikler",
+      isSection: true,
+    },
+    {
+      href: "showcase",
+      label: lang === "en" ? "Showcase" : "Demo",
+      isSection: true,
+    },
+    {
+      href: "/docs",
+      label: lang === "en" ? "Docs" : "Döküman",
+      isSection: false,
+    },
   ];
+
+  // Smooth scroll to section without changing URL
+  const scrollToSection = (sectionId: string) => {
+    const element = document.getElementById(sectionId);
+    if (element) {
+      element.scrollIntoView({ behavior: "smooth", block: "start" });
+    }
+  };
 
   const themeIcons: Record<string, React.ReactNode> = {
     light: <Icons.Sun className="w-4 h-4" />,
@@ -70,16 +90,27 @@ export function Navbar({ lang, setLang }: NavbarProps) {
 
             {/* Desktop Navigation */}
             <div className="hidden lg:flex items-center gap-1">
-              {navLinks.map((link) => (
-                <Link
-                  key={link.href}
-                  href={link.href}
-                  className="relative px-4 py-2 text-sm font-medium text-secondary hover:text-foreground transition-colors group"
-                >
-                  {link.label}
-                  <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary rounded-full group-hover:w-1/2 transition-all duration-300" />
-                </Link>
-              ))}
+              {navLinks.map((link) =>
+                link.isSection ? (
+                  <button
+                    key={link.href}
+                    onClick={() => scrollToSection(link.href)}
+                    className="relative px-4 py-2 text-sm font-medium text-secondary hover:text-foreground transition-colors group"
+                  >
+                    {link.label}
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary rounded-full group-hover:w-1/2 transition-all duration-300" />
+                  </button>
+                ) : (
+                  <Link
+                    key={link.href}
+                    href={link.href}
+                    className="relative px-4 py-2 text-sm font-medium text-secondary hover:text-foreground transition-colors group"
+                  >
+                    {link.label}
+                    <span className="absolute bottom-0 left-1/2 -translate-x-1/2 w-0 h-0.5 bg-primary rounded-full group-hover:w-1/2 transition-all duration-300" />
+                  </Link>
+                )
+              )}
               <a
                 href="https://github.com/poyrazavsever/reactive-switcher"
                 target="_blank"
@@ -158,16 +189,29 @@ export function Navbar({ lang, setLang }: NavbarProps) {
           }`}
         >
           <div className="px-4 py-4 bg-background/95 backdrop-blur-xl space-y-2">
-            {navLinks.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                onClick={() => setIsMobileMenuOpen(false)}
-                className="block px-4 py-3 text-base font-medium text-foreground hover:bg-surface-100 rounded-xl transition-colors"
-              >
-                {link.label}
-              </Link>
-            ))}
+            {navLinks.map((link) =>
+              link.isSection ? (
+                <button
+                  key={link.href}
+                  onClick={() => {
+                    scrollToSection(link.href);
+                    setIsMobileMenuOpen(false);
+                  }}
+                  className="block w-full text-left px-4 py-3 text-base font-medium text-foreground hover:bg-surface-100 rounded-xl transition-colors"
+                >
+                  {link.label}
+                </button>
+              ) : (
+                <Link
+                  key={link.href}
+                  href={link.href}
+                  onClick={() => setIsMobileMenuOpen(false)}
+                  className="block px-4 py-3 text-base font-medium text-foreground hover:bg-surface-100 rounded-xl transition-colors"
+                >
+                  {link.label}
+                </Link>
+              )
+            )}
 
             {/* Mobile Theme Switcher */}
             <div className="px-4 py-3">

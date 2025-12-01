@@ -23,6 +23,61 @@ export default function DocsPage() {
 
   return (
     <div className="min-h-screen bg-background">
+      {/* Animation Styles */}
+      <style jsx>{`
+        @keyframes fadeInUp {
+          from {
+            opacity: 0;
+            transform: translateY(20px);
+          }
+          to {
+            opacity: 1;
+            transform: translateY(0);
+          }
+        }
+
+        @keyframes fadeIn {
+          from {
+            opacity: 0;
+          }
+          to {
+            opacity: 1;
+          }
+        }
+
+        .animate-fade-in-up {
+          animation: fadeInUp 0.6s ease-out forwards;
+          opacity: 0;
+        }
+
+        .animate-fade-in {
+          animation: fadeIn 0.4s ease-out forwards;
+          opacity: 0;
+        }
+
+        .delay-100 {
+          animation-delay: 100ms;
+        }
+        .delay-200 {
+          animation-delay: 200ms;
+        }
+        .delay-300 {
+          animation-delay: 300ms;
+        }
+        .delay-400 {
+          animation-delay: 400ms;
+        }
+        .delay-500 {
+          animation-delay: 500ms;
+        }
+        .delay-600 {
+          animation-delay: 600ms;
+        }
+        .delay-700 {
+          animation-delay: 700ms;
+        }
+      `}</style>
+
       {/* Navbar */}
       <nav className="fixed top-0 w-full z-50 bg-background/80 backdrop-blur-xl border-b border-surface-200/50">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -74,21 +129,21 @@ export default function DocsPage() {
         <div className="max-w-4xl mx-auto">
           {/* Header */}
           <div className="mb-12">
-            <div className="inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
+            <div className="animate-fade-in-up inline-flex items-center gap-2 px-4 py-2 rounded-full bg-primary/10 border border-primary/20 text-primary text-sm font-medium mb-6">
               <Icons.Book className="w-4 h-4" />
               Documentation
             </div>
-            <h1 className="text-4xl sm:text-5xl font-bold text-foreground mb-4">
+            <h1 className="animate-fade-in-up delay-100 text-4xl sm:text-5xl font-bold text-foreground mb-4">
               Getting Started
             </h1>
-            <p className="text-lg text-secondary">
+            <p className="animate-fade-in-up delay-200 text-lg text-secondary">
               Learn how to integrate reactive-switcher into your React project
               in minutes.
             </p>
           </div>
 
           {/* Installation */}
-          <section className="mb-16">
+          <section className="animate-fade-in-up delay-300 mb-16">
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
                 1
@@ -105,7 +160,7 @@ export default function DocsPage() {
           </section>
 
           {/* Define Themes */}
-          <section className="mb-16">
+          <section className="animate-fade-in-up delay-400 mb-16">
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
                 2
@@ -168,7 +223,7 @@ export const themes: ThemesConfig = {
           </section>
 
           {/* Wrap App */}
-          <section className="mb-16">
+          <section className="animate-fade-in-up delay-500 mb-16">
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
                 3
@@ -208,7 +263,7 @@ export default function RootLayout({ children }) {
           </section>
 
           {/* Use Hook */}
-          <section className="mb-16">
+          <section className="animate-fade-in-up delay-600 mb-16">
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
                 4
@@ -258,7 +313,7 @@ export function ThemeButton() {
           </section>
 
           {/* Tailwind CSS */}
-          <section className="mb-16">
+          <section className="animate-fade-in-up delay-700 mb-16">
             <h2 className="text-2xl font-bold text-foreground mb-6 flex items-center gap-3">
               <span className="w-8 h-8 rounded-lg bg-primary/10 flex items-center justify-center text-primary text-sm font-bold">
                 5
@@ -302,7 +357,7 @@ export function ThemeButton() {
           </section>
 
           {/* API Reference */}
-          <section className="mb-16">
+          <section className="animate-fade-in delay-500 mb-16">
             <h2 className="text-2xl font-bold text-foreground mb-8">
               API Reference
             </h2>
@@ -458,11 +513,11 @@ export function ThemeButton() {
           </section>
 
           {/* Footer */}
-          <footer className="pt-8 border-t border-surface-200">
+          <footer className="animate-fade-in delay-600 pt-8 border-t border-surface-200">
             <div className="flex flex-col sm:flex-row items-center justify-between gap-4">
               <p className="text-secondary text-sm">
                 Made with{" "}
-                <Icons.Heart className="w-4 h-4 inline text-red-500" /> by{" "}
+                <Icons.Heart className="w-4 h-4 inline text-red-500\" /> by{" "}
                 <a
                   href="https://poyrazavsever.com"
                   target="_blank"
