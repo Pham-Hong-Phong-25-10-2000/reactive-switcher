@@ -1,6 +1,6 @@
 {
   "name": "reactive-switcher",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Type-safe, modular, and instant theme switching for React & Tailwind CSS v4",
   "author": "Poyraz Avsever",
   "license": "MIT",
@@ -8,7 +8,7 @@
     "type": "git",
     "url": "https://github.com/poyrazavsever/reactive-switcher"
   },
-  "homepage": "https://reactive-switcher.vercel.app",
+  "homepage": "https://reactive-switcher-j9qb.vercel.app/",
   "bugs": {
     "url": "https://github.com/poyrazavsever/reactive-switcher/issues"
   },
