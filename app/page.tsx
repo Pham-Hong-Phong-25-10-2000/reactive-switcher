@@ -22,7 +22,7 @@ export default function LandingPage() {
     <div className="min-h-screen bg-background text-foreground transition-colors duration-500 selection:bg-primary selection:text-primary-foreground font-sans">
       <Navbar lang={lang} setLang={setLang} />
 
-      <main>
+      <main className="pt-24 sm:pt-16">
         <Hero lang={lang} />
 
         <Features lang={lang} />
