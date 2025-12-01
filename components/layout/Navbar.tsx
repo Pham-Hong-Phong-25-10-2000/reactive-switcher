@@ -3,6 +3,7 @@
 import Image from "next/image";
 import { Icons } from "../icons";
 import { Lang } from "@/landing/content";
+import { useTheme } from "@/packages/theme-switcher/src";
 
 interface NavbarProps {
   lang: Lang;
@@ -10,6 +11,8 @@ interface NavbarProps {
 }
 
 export function Navbar({ lang, setLang }: NavbarProps) {
+  const { theme, setTheme, themes } = useTheme();
+
   const NavLink = ({ href, children, external = false, icon: Icon }: any) => (
     <a
       href={href}
@@ -38,7 +41,9 @@ export function Navbar({ lang, setLang }: NavbarProps) {
               sizes="36px"
             />
           </div>
-          <span className="text-lg font-bold bg-clip-text text-transparent bg-linear-to-r from-pink-500 via-yellow-500 to-green-500">Reactive Switcher</span>
+          <span className="text-lg font-bold bg-clip-text text-transparent bg-linear-to-r from-pink-500 via-yellow-500 to-green-500">
+            Reactive Switcher
+          </span>
         </div>
 
         {/* Navigation Links */}
@@ -69,6 +74,28 @@ export function Navbar({ lang, setLang }: NavbarProps) {
             <Icons.Github className="w-4 h-4" />
             <span className="hidden sm:inline">Star</span>
           </a>
+
+          <div className="w-px h-6 bg-surface-200 mx-1" />
+
+          {/* Theme Switcher */}
+          <div className="hidden sm:flex items-center gap-1 bg-surface-100 rounded-full p-1 border border-surface-200">
+            {themes.map((t) => (
+              <button
+                key={t}
+                onClick={() => setTheme(t)}
+                className={`w-8 h-8 flex items-center justify-center rounded-full transition-all ${
+                  theme === t
+                    ? "bg-primary text-white shadow-sm"
+                    : "text-secondary hover:text-foreground hover:bg-surface-200"
+                }`}
+                title={t.charAt(0).toUpperCase() + t.slice(1)}
+              >
+                {t === "light" && <Icons.Sun className="w-4 h-4" />}
+                {t === "dark" && <Icons.Moon className="w-4 h-4" />}
+                {t === "ocean" && <Icons.Waves className="w-4 h-4" />}
+              </button>
+            ))}
+          </div>
 
           <div className="w-px h-6 bg-surface-200 mx-1" />
 

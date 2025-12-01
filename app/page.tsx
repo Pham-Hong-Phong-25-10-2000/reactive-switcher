@@ -1,8 +1,8 @@
 "use client";
 
 import { useState } from "react";
-import { ThemeProvider } from "@/packages/theme-switcher/context"; // Import düzeltmesi
-import { myThemes } from "@/packages/theme-switcher/my-theme"; // Import düzeltmesi
+import { ThemeProvider } from "@/packages/theme-switcher/src";
+import { themes } from "@/landing/themes";
 import { content, Lang } from "@/landing/content";
 
 // Components

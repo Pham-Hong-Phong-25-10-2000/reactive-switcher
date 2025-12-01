@@ -42,6 +42,12 @@ export const Icons = {
   ),
   Palette: (props: any) => <IconWrapper icon="lucide:palette" {...props} />,
 
+  // Theme Icons
+  Sun: (props: any) => <IconWrapper icon="lucide:sun" {...props} />,
+  Moon: (props: any) => <IconWrapper icon="lucide:moon" {...props} />,
+  Waves: (props: any) => <IconWrapper icon="lucide:waves" {...props} />,
+  Monitor: (props: any) => <IconWrapper icon="lucide:monitor" {...props} />,
+
   // Steps
   Code: (props: any) => <IconWrapper icon="lucide:code-2" {...props} />,
   Layers: (props: any) => <IconWrapper icon="lucide:layers" {...props} />,

@@ -1,7 +1,7 @@
 "use client";
 
-import { useTheme, ThemeProvider } from "@/packages/theme-switcher/context";
-import { myThemes } from "@/packages/theme-switcher/my-theme";
+import { useTheme, ThemeProvider } from "@/packages/theme-switcher/src";
+import { themes } from "@/landing/themes";
 import { Lang, content } from "@/landing/content";
 import { Icons } from "../icons";
 
@@ -168,15 +168,17 @@ export function Showcase(props: ShowcaseProps) {
       id="showcase"
       className="py-24 px-6 bg-surface-50/30 border-y border-surface-200/50"
     >
-      {/* YENİ ÖZELLİK: Scoped Theme Provider
+      {/* Scoped Theme Provider
           - selector: CSS değişkenlerini #showcase-demo ID'sine uygular.
           - styleId: Çakışmayı önlemek için benzersiz bir style etiketi ID'si.
+          - enableStorage: false - Bu demo alanı için storage kullanma
       */}
       <ThemeProvider
-        themes={myThemes}
-        defaultTheme="ocean" // Demo için farklı bir varsayılan tema seçebiliriz
+        themes={themes}
+        defaultTheme="ocean"
         selector="#showcase-demo"
         styleId="showcase-theme-styles"
+        enableStorage={false}
       >
         <ShowcaseContent {...props} />
       </ThemeProvider>
