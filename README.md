@@ -532,6 +532,8 @@ MIT © [Poyraz Avsever](https://github.com/poyrazavsever)
 
 ---
 
+[![Star History Chart](https://api.star-history.com/svg?repos=poyrazavsever/reactive-switcher&type=date&legend=top-left)](https://www.star-history.com/#poyrazavsever/reactive-switcher&type=date&legend=top-left)
+
 <p align="center">
   Made with ❤️ by <a href="https://poyrazavsever.com">Poyraz Avsever</a>
 </p>
